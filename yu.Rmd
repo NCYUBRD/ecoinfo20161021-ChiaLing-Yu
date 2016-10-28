@@ -20,6 +20,9 @@ output: html_document
 ```{r setup, include=FALSE}
 setwd('.')
 ```
+#使用 fread 來讀取資料
+```cwddata <- fread('C:\\Users\\qwas8_000\\Desktop\\raw/200601_auto_hr.txt',skip=74)```
+
 
 ## R Markdown
 
