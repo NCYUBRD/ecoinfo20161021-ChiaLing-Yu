@@ -1,0 +1,42 @@
+---
+title: "yu"
+author: "パ"
+date: "201610る28ら"
+output: html_document
+---
+
+1. 璸衡代C0M530(灸癬打)眖 2006-2015 
+* –らキА放
+* –ら程放キА
+* –ら程蔼放キА
+* –るキА放
+* キА–る仓縩
+2. 璸衡程穢る–ら程蔼放キА
+3. 璸衡程る–ら程放キА
+
+[﹍戈](https://www.dropbox.com/s/1rozrajsrw9vh8v/raw.tar.bz2?dl=0)
+
+
+```{r setup, include=FALSE}
+setwd('.')
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
