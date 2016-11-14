@@ -16,10 +16,58 @@ output: html_document
 
 [原始資料](https://www.dropbox.com/s/1rozrajsrw9vh8v/raw.tar.bz2?dl=0)
 
-
-```{r setup, include=FALSE}
-setwd('.')
+```{r}
+# 載入必要的libraries
+library(raw)
 ```
+
+###先將奮起湖測站的資料輸入進R
+```{r}
+rawdata <- fread('rawdata.txt', header = FALSE,
+na.strings = c('-9991','-9996','-9997','-9998','-9999'))
+```
+
+#設定欄位名稱
+#先將欄位名稱儲存成一個文字向量並命名成colnamesrawdata
+```{r}
+colnamesrawdata <- c('stno', 'yyyymmddhh', 'PS01', 'TX01', 'RH01', 'WD01', 'WD02', 'PP01', 'SS01')
+#使用setnames()來設定欄位名稱
+setnames(rawdata, colnamesrawdata)
+```
+
+輸入資料後先看一下資料的樣子
+```{r}
+#看一下資料的維度
+dim(rawdata)
+```
+
+再看一下前幾列資料
+```{r}
+head(rawdata)
+```
+
+如何使用聚合(aggegrate)來計算某個週期的平均氣象觀測資料。我們要把想計算的觀測資料，依據時間來做計算
+一、如何把yyyymmddhh這個欄位轉換成符合「時間格式規範」(一般來說是POSIT data time)的欄位，可以使用```{r} striptime()``` 來處理
+
+```{r}
+rawdata[ , timestamp := as.POSIXct(strptime(yyyymmddhh-1, '%Y%m%d%H'))]
+```
+
+```{r}
+#新增一個欄位為年
+rawdata[, year:= raw::year(timestamp)]
+```
+
+```{r}
+#新增一個欄位為月
+rawdata[, month:= raw::month(timestamp)]
+```
+
+```{r}
+#r計算每個月的平均溫度
+aggrMonth <- aggregate(TX01~month, data=rawdata, fun=mean)
+```
+
 #使用 fread 來讀取資料
 ```cwddata <- fread('C:\\Users\\qwas8_000\\Desktop\\raw/200601_auto_hr.txt',skip=74)```
 
